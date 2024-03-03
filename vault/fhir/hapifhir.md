@@ -16,4 +16,14 @@
 - Resource Provider
 
 ### Pointcuts 
+
+#### Plain Server Pointcuts
 ![](https://hapifhir.io/hapi-fhir/docs/interceptors/server_pointcuts/interceptors-server-pipeline.svg)
+
+#### Storage / JPA Server Pointcuts
+![Storage / JPA Server Pointcuts](https://hapifhir.io/hapi-fhir/docs/interceptors/server_pointcuts/interceptors-server-jpa-pipeline.svg)
+
+## Performance and Caching
+![Query Cache](https://smilecdr.com/docs/images/fhir_repository-query_cache.svg)
+
+

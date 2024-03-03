@@ -1,0 +1,3 @@
+- MediatR
+- [Why use MediatR? 3 reasons why and 1 reason not](https://codeopinion.com/why-use-mediatr-3-reasons-why-and-1-reason-not/)
+- alternatives: NServiceBus, Brighter, MassTransit, Rebus.

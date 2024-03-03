@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../repos/FhirEngine"
+		},
+		{
+			"path": "../repos/Synapxe.FhirWebApi1"
+		}
+	],
+	"settings": {
+		"foam.edit.linkReferenceDefinitions": "withExtensions"
+	}
+}
