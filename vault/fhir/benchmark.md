@@ -1,0 +1,3 @@
+- [PERFORMANCE TESTING BENCHMARKING SMILE CDR AT SCALE IN AWS](https://www.smiledigitalhealth.com/benchmarking-smile-cdr)
+- [Google-Healthcare-API-Whitepaper-Update_-October-2021](https://www.onixnet.com/wp-content/uploads/2023/02/Final-Version_-Google-Healthcare-API-Whitepaper-Update_-October-2021.pdf)
+- (1 patient = ~500 FHIR resources).

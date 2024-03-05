@@ -7,3 +7,7 @@ You can create todos in Foam.
 - [ ] You can mark it completed by pressing `Option`+`C` (or `Alt`+`C`) when your cursor is on this line
   - [ ] You can also select multiple lines and mark them all at once!
 - [ ] "Stack Walking" in the .NET Runtime
+- [ ] sequence diagram with handlers
+- [ ] sequence diagram without handlers ? what's the flow?:  Repository will provide default handlers.
+- [ ] how repository (dataservice, search service, distributed cache fit into )
+- [ ] AddFromConfiguration

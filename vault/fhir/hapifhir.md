@@ -27,3 +27,8 @@
 ![Query Cache](https://smilecdr.com/docs/images/fhir_repository-query_cache.svg)
 
 
+## [Hacking HAPI FHIR](https://hapifhir.io/hapi-fhir//docs/contributing/hacking_guide.html)
+
+## acronym
+-  HFJ: HAPI FHIR JPA
+

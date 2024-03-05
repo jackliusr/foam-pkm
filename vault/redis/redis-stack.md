@@ -27,5 +27,8 @@
       ports:
           - "8081:8081"
   ```
-- C# Redis – Implementing Cache Tagging
-- Redis Smart Cache ![Redis Smart Cache](https://raw.githubusercontent.com/redis-field-engineering/redis-smart-cache/master/src/media/redis-smart-cache-flow.png)
+- [C# Redis – Implementing Cache Tagging](https://stackify.com/implementing-cache-tagging-redis/)
+  - issues:
+    - tag-set growth: Redis only allows the expiration of entire entries – expiration cannot be set to a single value within any of Redis’ collection data types.
+    - evit
+- Redis Smart Cache: java ![Redis Smart Cache](https://raw.githubusercontent.com/redis-field-engineering/redis-smart-cache/master/src/media/redis-smart-cache-flow.png)

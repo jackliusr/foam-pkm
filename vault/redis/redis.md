@@ -1,0 +1,4 @@
+- protocol: RESP2 and RESP3
+  - RESP3 can carry out-of-band / “push” messages on a single connection, where-as RESP2 requires a separate connection for these messages
+  - RESP3 can (when appropriate) convey additional semantic meaning about returned payloads inside the same result structure
+  - Some commands (see this topic) return different result structures in RESP3 mode; for example a flat interleaved array might become a jagged array

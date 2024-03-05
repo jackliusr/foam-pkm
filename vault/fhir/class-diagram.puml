@@ -1,0 +1,34 @@
+@startuml
+
+interface IRepositoryServiceBase{
+    Id: string
+    AcceptedTypes: IEnumerable<string>
+}
+
+interface IDataService {
+    UpsertAsync(): Task<UpsertOutcome?>
+    GetAsync():  Task<TResource?>
+    HardDeleteAsync(): Task
+}
+
+interface ITransactionProvider {
+    AcceptedTypes: IEnumerable<string> 
+    MustComplete: bool
+    IsTransactionStarted: bool
+    BeginTransactionAsync: Task<ITransactionScope>
+}
+
+interface IContextDataService as "IContextDataService<TContext>" {
+    Context: TContext
+}
+interface ISqlServerTransactionProvider{
+
+}
+interface ISqlServerFhirDataStore{
+}
+IContextDataService -d-|> ITransactionProvider
+IContextDataService -d-|> IDataService
+ISqlServerFhirDataStore -d-|> IContextDataService
+ISqlServerFhirDataStore -d-|> ISqlServerTransactionProvider
+IDataService -d-|> IRepositoryServiceBase
+@enduml
