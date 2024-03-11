@@ -1,0 +1,47 @@
+<table
+    style="border:1px solid black; border-collapse:collapse; font-family:&quot;Times New Roman&quot;; font-size:medium"
+    width="">
+    <tbody>
+        <tr style="height:20px">
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">Type </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">Example Query </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">Tags </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">Remarks </td>
+        </tr>
+        <tr style="height:20px">
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">logical Id </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">
+                Patient/_search?_id=115c043820f642d78620c9f871842f40 </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse; width:403px">
+                <br>Patient/115c043820f642d78620c9f871842f40<br>Patient/S1234567D </td>
+            <td style="border:1px solid black; border-collapse:collapse">might be other resource types. </td>
+        </tr>
+        <tr style="height:20px">
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">identifier </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">
+                Patient/_search?patient-nric=S1234567D </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">
+                Patient/115c043820f642d78620c9f871842f40<br>Patient/S1234567D </td>
+            <td style="border:1px solid black; border-collapse:collapse">might be other resource types. </td>
+        </tr>
+        <tr style="height:20px">
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">identifier </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">
+                Organization/_scearch?hci-code=M09850D </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">
+                Organization/ecd64d3c152841b38229d0c9cd7a68a8<br>Organization/M09850D </td>
+            <td style="border:1px solid black; border-collapse:collapse">might be other resource types. </td>
+        </tr>
+        <tr style="height:20px">
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">no logical id and identifier </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">
+                <div style="left:-1px">
+                    CarePlan/_search?subject=Patient/115c043820f642d78620c9f871842f40&amp;category=pophealth-plan&amp;sort=_lastUpdated&amp;_count=1
+                </div>
+            </td>
+            <td dir="ltr" style="border:1px solid black; border-collapse:collapse">CarePlan-<span
+                    style="display:inline !important">115c043820f642d78620c9f871842f40</span>|pophealth-plan </td>
+            <td>might be other resource types. </td>
+        </tr>
+    </tbody>
+</table>
