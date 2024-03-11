@@ -1,0 +1,2 @@
+- Key Management Interoperability Protocol (KMIP) : KMIP enables communication between key management systems and cryptographically-enabled applications, including email, databases, and storage devices
+- *12 factor: secret*

@@ -4,3 +4,4 @@
   - Some commands (see this topic) return different result structures in RESP3 mode; for example a flat interleaved array might become a jagged array
 - data structure:
   - hashset: 
+- database: Redis by default have 16 databases that can be selected by using SELECT command.  since Redis Cluster only supports database zero.

@@ -7,6 +7,19 @@
 - FhirResourceCachingHandler: 
 - DetermineInteractionType
 - localdb: only in windows; for linux or wsl, use sqlserver or sql server express
+- Verifer
+  ```C#
+  FhirPathFilterConditiong
+  ClaimsFilterConditiong
+  PathQueryFilterConditiong
+  RolesFilterConditiong
+  HeadersFilterConditiong
+  NullFilterConditiong
+  ContextItemKeyExistsFilterConditiong
+
+  CachedFhirHandlerConditionVerifiers
+  ConditionalFhirHandlerFilter
+  ```
 - builder.AddFhirEngineServer(DefaultConfigSection section): extension method
         AddFhirEngineServer(Assembly, section)
         R5: IFhirEngineBuilder AddFhirEngineServer(this IServiceCollection services, Assembly callingAssembly, IConfiguration configuration, string configSection)

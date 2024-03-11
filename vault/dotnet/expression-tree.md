@@ -1,0 +1,3 @@
+- tools: 
+  - [ReadableExpressions.Visualizers](https://marketplace.visualstudio.com/items?itemName=vs-publisher-1232914.ReadableExpressionsVisualizers)
+  - Expression Tree Visualizer

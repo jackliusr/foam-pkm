@@ -1,0 +1,2 @@
+- types of jobs in AWS Glue: Spark, Streaming ETL, and Python shell
+  - A streaming ETL job is similar to a Spark job, except that it performs ETL on data streams. It uses the Apache Spark Structured Streaming framework. Some Spark job features are not available to streaming ETL jobs.
