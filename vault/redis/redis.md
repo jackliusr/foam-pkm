@@ -5,3 +5,16 @@
 - data structure:
   - hashset: 
 - database: Redis by default have 16 databases that can be selected by using SELECT command.  since Redis Cluster only supports database zero.
+- default ttl: -1, keep forever
+- Syntax to flush Redis cache to clear redis cache
+  ```bash
+  redis-cli FLUSHDB
+  redis-cli -n DB_NUMBER FLUSHDB
+  redis-cli -n DB_NUMBER FLUSHDB ASYNC
+  redis-cli FLUSHALL
+  redis-cli FLUSHALL ASYNC
+  ```
+- redisinsight is free to use: 
+  ```bash
+  docker run -d --name redisinsight -v redisinsight:/db -p 8001:5540 redislabs/redisinsight:latest
+  ```

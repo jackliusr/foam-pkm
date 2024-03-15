@@ -18,7 +18,7 @@ interface ITransactionProvider {
     BeginTransactionAsync: Task<ITransactionScope>
 }
 
-interface IContextDataService as "IContextDataService<TContext>" {
+interface IContextDataService< TContext > {
     Context: TContext
 }
 interface ISqlServerTransactionProvider{
@@ -26,9 +26,25 @@ interface ISqlServerTransactionProvider{
 }
 interface ISqlServerFhirDataStore{
 }
+
+interface  ISearchService {
+    SearchAsync: Task<SearchResult>
+    SearchCompartmentAsync: Task<SearchResult>
+}
+
+interface IRepositoryService as "IRepositoryService<DomainResource> " {
+
+}
+interface IRepositoryService {
+
+}
+
 IContextDataService -d-|> ITransactionProvider
 IContextDataService -d-|> IDataService
 ISqlServerFhirDataStore -d-|> IContextDataService
 ISqlServerFhirDataStore -d-|> ISqlServerTransactionProvider
 IDataService -d-|> IRepositoryServiceBase
+ISearchService -d->IRepositoryServiceBase
+IRepositoryService_t -d-> ISearchService
+IRepositoryService_t -d-> IDataService
 @enduml

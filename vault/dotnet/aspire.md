@@ -1,0 +1,2 @@
+- ![alt text](https://learn.microsoft.com/en-us/dotnet/aspire/docs/media/app-host-resource-diagram.png)https://learn.microsoft.com/en-us/dotnet/aspire/docs/media/app-host-resource-diagram.png
+- ![alt text](https://learn.microsoft.com/en-us/dotnet/aspire/docs/fundamentals/media/networking/networking-proxies-1x.png)https://learn.microsoft.com/en-us/dotnet/aspire/docs/fundamentals/media/networking/networking-proxies-1x.png

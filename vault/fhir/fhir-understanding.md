@@ -1,12 +1,23 @@
 - UseFhirController: false
 - ComputeHash: SHA256, utf-8, replace "-" in the end result string
 - FhirEngineOptions:  during the configiration, it might wire all the components together
-- [[2024-03-06]]: not used in v4.1.0. current implement in v4.0.0
+- not used in v4.1.0. current implement in v4.0.0
 - MergeResourcesHandler: 
 - AddRepositoryHandlers:
-- FhirResourceCachingHandler: 
+- FhirResourceCachingHandler:
+- SearchOptionsFactory:  create search options
+  ```mermaid
+  classDiagram
+      note "SearchOptions, created from SearchOptionsFactory"
+      SearchOptions : +int age
+      SearchOptions : +String gender
+      SearchOptions: +isMammal()
+      SearchOptions: +mate()
+  ```
+- ResourceRepositoryCacheService: new version of cache implementation, ResourceRepositoryCacheService, IRepositoryService<TResource>
 - DetermineInteractionType
 - localdb: only in windows; for linux or wsl, use sqlserver or sql server express
+- ReferenceCheckOptions.CacheDurationInMinutes: 2 mins
 - Verifer
   ```C#
   FhirPathFilterConditiong
@@ -49,26 +60,26 @@
           AssemblyFinder assemblyFinder,
           Action<ConfigurationReaderOptions> configureOptions)
           where TConfig : class
-ConfigurationReader<TConfig>
-  ResolutionContext.CallConfigurationMethods(
-      typeof(TConfig),
-      builderDirective,
-      getChildren,
-      null,
-      options.MethodFilterFactory,
-      (arguments, methodInfo) => methodInfo.InvokeWithArguments(builder, arguments));
-ResolutionContext(
-         AssemblyFinder assemblyFinder,
-         IConfiguration rootConfiguration,
-         IConfigurationSection appConfiguration,
-         IEnumerable<MethodInfo> additionalMethods,
-         Action<ExtensionMethodNotFoundEventArgs> onExtensionMethodNotFound,
-         Action<string>? onExtensionMethodFound,
-         params Type[] markerTypes)
-         CallConfigurationMethods
-         CallConfigurationMethod
-FhirEngineBuilderRegistrationExtensions         
-```                  
+  ConfigurationReader<TConfig>
+    ResolutionContext.CallConfigurationMethods(
+        typeof(TConfig),
+        builderDirective,
+        getChildren,
+        null,
+        options.MethodFilterFactory,
+        (arguments, methodInfo) => methodInfo.InvokeWithArguments(builder, arguments));
+  ResolutionContext(
+          AssemblyFinder assemblyFinder,
+          IConfiguration rootConfiguration,
+          IConfigurationSection appConfiguration,
+          IEnumerable<MethodInfo> additionalMethods,
+          Action<ExtensionMethodNotFoundEventArgs> onExtensionMethodNotFound,
+          Action<string>? onExtensionMethodFound,
+          params Type[] markerTypes)
+          CallConfigurationMethods
+          CallConfigurationMethod
+  FhirEngineBuilderRegistrationExtensions         
+  ```                  
 - MapFhirEngine
   ```c#
         endpoints.MapPost(ApplyRootPath(KnownRoutes.ResourceType), ProcessWithBodyType)
@@ -76,8 +87,11 @@ FhirEngineBuilderRegistrationExtensions
             .AcceptsFhirResource()
             .ProducesFhirResponse(StatusCodes.Status201Created);
     ```
-- Callstack of handlers	
-   Synapxe.FhirWebApi1.dll!Synapxe.FhirWebApi1.Handlers.AppointmentDataFhirHandler.ValidateNoAppointmentConflictAsync(Hl7.Fhir.Model.Appointment appointment, System.Threading.CancellationToken cancellationToken) Line 65	C#
+- SearchQueryExtensions
+- SearchExtensions
+- Callstack of handlers
+  ```
+  Synapxe.FhirWebApi1.dll!Synapxe.FhirWebApi1.Handlers.AppointmentDataFhirHandler.ValidateNoAppointmentConflictAsync(Hl7.Fhir.Model.Appointment appointment, System.Threading.CancellationToken cancellationToken) Line 65	C#
       Ihis.FhirEngine.Core.dll!Ihis.FhirEngine.Core.Handlers.Builder.DelegateFhirHandler<System.__Canon, System.__Canon>.TryExecuteDelegate.AnonymousMethod__1(System.__Canon i, Ihis.FhirEngine.Core.IFhirContext c, System.Threading.CancellationToken ct)	Unknown
       Ihis.FhirEngine.Core.dll!Ihis.FhirEngine.Core.Handlers.Builder.BaseDelegateFhirHandler<System.__Canon, System.__Canon>.ProcessAsync.AnonymousMethod__0(Ihis.FhirEngine.Core.IFhirContext ctx, System.Threading.CancellationToken ct)	Unknown
       Ihis.FhirEngine.Core.dll!Ihis.FhirEngine.Core.Handlers.NullFhirHandlerInvoker.InvokeAsync(System.Func<Ihis.FhirEngine.Core.IFhirContext, System.Threading.CancellationToken, System.Threading.Tasks.Task> asyncAction, Ihis.FhirEngine.Core.IFhirHandlerMetadata handlerMetadata, Ihis.FhirEngine.Core.IFhirContext context, int? index, System.Threading.CancellationToken cancellationToken)	Unknown
@@ -86,8 +100,9 @@ FhirEngineBuilderRegistrationExtensions
       Ihis.FhirEngine.Core.dll!Ihis.FhirEngine.Core.Handlers.FhirHandlerProcessor.ProcessAsync(Ihis.FhirEngine.Core.IFhirContext context, System.Threading.CancellationToken cancellationToken)	Unknown
       Ihis.FhirEngine.WebApi.Core.dll!Ihis.FhirEngine.WebApi.Core.Endpoint.FhirBaseResult.ExecuteAsync(Microsoft.AspNetCore.Http.HttpContext httpContext)	Unknown
       Microsoft.AspNetCore.Http.Extensions.dll!Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteResultWriteResponse(Microsoft.AspNetCore.Http.IResult result, Microsoft.AspNetCore.Http.HttpContext httpContext)	Unknown
+  ```
 - Cache tag of resource: "{resourceType}/{id}"
-- DefaultConfigSection: FhirEngine
+-  DefaultConfigSection: FhirEngine
 - configuration main class: 
   - SurrogateConfigurationMethods: 
 - key functions:
@@ -110,58 +125,3 @@ FhirEngineBuilderRegistrationExtensions
         - factory(context.RequestServices, null) 
           - FhirResult.ExecuteAsync
           - FhirHandlerProcessor.ProcessAsync
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"
-
-
-[//begin]: # "Autogenerated link references for markdown compatibility"
-[2024-03-06]: ../journals/2024-03-06.md "2024-03-06"
-[//end]: # "Autogenerated link references"

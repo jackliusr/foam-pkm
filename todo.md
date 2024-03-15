@@ -15,16 +15,22 @@ You can create todos in Foam.
 - [ ] issues: 
   ```
   #61 94.17 /src/src/Ihis.FhirEngine.SqlServer/Tables/ResourceChangeDataStaging.sql(18,1,18,1): Build warning SQL70588: WITH CHECK | NOCHECK option for existing data check enforcement is ignored. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
-#61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(1,1,1,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
-#61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(112,1,112,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
-#61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(232,1,232,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
-#61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(283,1,283,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
-#61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(429,1,429,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
-#61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(623,1,623,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
+  #61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(1,1,1,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
+  #61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(112,1,112,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
+  #61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(232,1,232,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
+  #61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(283,1,283,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
+  #61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(429,1,429,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
+  #61 94.17 /src/src/Ihis.FhirEngine.SqlServer/tests/Ihis.FhirEngine.E2E.R5.IntegrationTests/RelationalSchema.sql(623,1,623,1): Build error SQL71006: Only one statement is allowed per batch. A batch separator, such as 'GO', might be required between statements. [/src/src/Ihis.FhirEngine.SqlServer/Ihis.FhirEngine.SqlServer.sqlproj]
   ```
 - [ ]   Unable to find package Ihis.Utilities.NricValidator.
 - [ ]   Detected package version outside of dependency constraint: Microsoft.CodeAnalysis.CSharp.Workspaces 4.4.0 requires Microsoft.CodeAnalysis.CSharp (= 4.4.0) but version Microsoft.CodeAnalysis.CSharp 4.8.0 was resolved. [/src/Ihis.FhirEngine.Test.slnf]
-- [ ]    default resources  and their configurations ( capability-statements, etc)
+- [ ]   TestScript for automate testing
+- [ ]   default resources  and their configurations ( capability-statements, etc)
 - [ ] vision
   - [ ] out-of-the-box，immediately can experience
   - [ ] production grade:  performant, scalable, stable
+- [ ] ADC discussion
+- [ ]  [xUnit.net 00:00:14.07]     Ihis.FhirEngine.Extensions.Polly.UnitTests.PolicyDataServiceTests.GetNullValueAsync_WithCaching_SubsequentCallsAreCached [FAIL]
+- [ ]  Microsoft.Data.SqlClient.SqlException (0x80131904): Login failed for user 'sa'.  Passed!  - Failed:     0, Passed:  1497, Skipped:     0, Total:  1497, Duration: 13 m 17 s - Ihis.FhirEngine.Data.R4.Tests.dll (net8.0)
+- [ ]  CreateAppointmentForVersion_ReadSaved_IsExactlySame
+- [ ]  Health_Get_ReturnsHealthCheck

@@ -28,3 +28,8 @@
 
 - expression tree
   - ReadableExpressions.Visualizers
+- [Microsoft Developer Control Plane (DCP)](https://dev.to/asimmon/exploring-the-microsoft-developer-control-plane-at-the-heart-of-the-new-net-aspire-123)
+  - dcp.exe
+  - dcpctrl.exe
+  - dcpd.exe
+- [Trust HTTPS certificate from Windows Subsystem for Linux](https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-8.0&tabs=visual-studio%2Clinux-ubuntu#trust-https-certificate-from-windows-subsystem-for-linux)https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-8.0&tabs=visual-studio%2Clinux-ubuntu#trust-https-certificate-from-windows-subsystem-for-linux
