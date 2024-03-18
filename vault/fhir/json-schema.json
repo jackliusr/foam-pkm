@@ -1,0 +1,39 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "http://ihis.sg/fhisengine.schema.json",
+    "title": "FhirEngine",
+    "description": "FhirEngine configration, refer to FhirEngineOptions class",
+    "type": "object",
+    "properties": {
+        "AllowedVersions":{
+            "type": "string",
+            "enum": ["Unspecified", "R4", "R5"],
+            "description": "Allowed FHIR Version, "
+        },
+        "DefaultVersion": {
+            "type": "string",
+            "enum": ["Unspecified", "R4", "R5"]
+        },
+        "DisableAutoTransaction":{
+            "type": "boolean",
+            "description": "disable auto transaction",
+            "default": "true"
+        },
+        "DisableHandlerAutoRegistration" :{
+            "type": "boolean",
+            "description": "disable auto-registration of handlers"
+        },
+        "DisableHandlerParameterCache": {
+            "type":"boolean",
+            "description": "FhirHandlerParameterCache and HandlerParametersPreloadFilter"
+        },
+        "EnableHandlerAutoRegistration": {
+            "type": "boolean",
+            "description": "when set to true, register handlers automatically"
+        },
+        "EnableUnconfiguredHandlers":{
+            "type": "boolean",
+            "description": "When set to true, all registered non-CRUD handlers are enabled even if it is unconfigured in the workflow handlers"
+        }
+    }
+  }

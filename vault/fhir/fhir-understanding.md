@@ -14,10 +14,29 @@
       SearchOptions: +isMammal()
       SearchOptions: +mate()
   ```
+- additional service path in FhirEngine section: ["Handlers", "SystemPlugins", "Handlers:RepositoryHandlers:DbRepository"]
 - ResourceRepositoryCacheService: new version of cache implementation, ResourceRepositoryCacheService, IRepositoryService<TResource>
 - DetermineInteractionType
 - localdb: only in windows; for linux or wsl, use sqlserver or sql server express
 - ReferenceCheckOptions.CacheDurationInMinutes: 2 mins
+- how repository add?
+  - AddFhirDataStoreHandler
+- AddRepositoryServiceAndHandlers: 
+  - TRepositoryService, IRepositoryService, 
+  - RepositoryOptions
+- FhirHandlerActivator: based on FHIREngine configration options and  fhirSpecificationAccessor
+  - GetHandlers
+  - GetSearchService
+  - GetDataService
+- SqlCommandWrapper: IDisposable, IAsyncDisposable; add more control when to dispose sqlcommnad
+- ResourceWrapper, ResourceElement, RawResource, ResourceRequest
+  - ResourceWrapper: element, rawResource, request, searchIndexEntries, compartmentIndices, searchParamerHash
+  - ResourceElement: Id,VersionId,InstanceType, LastUpdated
+  - ResourceRequest: http method, url
+  - RawResource: data, Format(json,xml, unknown), 
+    - isMetaSet: Specifies whether the meta section in the serialized resource in Data is set correctly.We expect that for a RawResource resulting from an update, the version needs to be updated, so isMetaSet would be false. While on a RawResource resulting from a create, the version should be correct and isMetaSet would be true.
+- ReflectionUtil
+  - CompileGenericMethodWithReplacement
 - Verifer
   ```C#
   FhirPathFilterConditiong
@@ -42,17 +61,35 @@
               IFhirEngineBuilder AddFromConfiguration(this IFhirEngineBuilder builder, string sectionName, string[] additionalServicePaths)
                 AddFromConfiguration(this IFhirEngineBuilder builder, string sectionName, string[] additionalServicePaths, string[] candidateMethodNameSuffixes)
                   **ProcessConfiguration**
-- ProcessConfiguration: 
+- [ProcessConfiguration](https://github.com/almostchristian/ConfigurationProcessor.DependencyInjection/blob/dd470bd7a77168e7b7e3f2383ec041281816b41a/src/ConfigurationProcessor.Core/ConfigurationExtensions.cs#L32)
+  -    public static TContext ProcessConfiguration<TContext>(
+       this IConfiguration configuration,
+       TContext context, //IFhirEngineBuilder
+       string configSection,
+       string[]? contextPaths = null,
+       MethodFilterFactory? methodFilterFactory = null,
+       MethodInfo[]? additionalMethods = null)
+       where TContext : class
+      => configuration.ProcessConfiguration(
+          context,
+          options =>
+          {
+             options.ConfigSection = configSection;
+             options.MethodFilterFactory = methodFilterFactory;
+             options.AdditionalMethods = additionalMethods ?? Enumerable.Empty<MethodInfo>();
+             options.ContextPaths = contextPaths;
+          });
   ```c#
   //string[] candidateMethodNameSuffixes = ["Handler", "Handlers"]
   //VersionedMethodFilter: specific versioned methods: R4, R
+  // [Github](https://github.com/almostchristian/ConfigurationProcessor.DependencyInjection/blob/dd470bd7a77168e7b7e3f2383ec041281816b41a/src/ConfigurationProcessor.Core/ConfigurationExtensions.cs#L32)
   ProcessConfiguration(
                 this IConfiguration configuration,
                 builder, //IFhirEngineBuilder, TContext context,
                 sectionName, //FhirEngine
                 additionalServicePaths.Where(x => x != null).ToArray()!, //{ "Handlers", "SystemPlugins", "Handlers:RepositoryHandlers:DbRepository" }
                 MethodFilterFactories.WithSuffixes(VersionedMethodFilter, candidateMethodNameSuffixes),
-                SurrogateConfigurationMethods.AddHandlers); //all methods started with Add
+                SurrogateConfigurationMethods.AddHandlers); //all methods started with Add in SurrogateConfigurationMethods
   AddFromConfiguration(IConfiguration, AssemblyFinder,Action<ConfigurationReaderOptions> configureOptions)
   internal static TConfig ConfigurationExtensions.AddFromConfiguration<TConfig>(
           this TConfig builder,
@@ -105,6 +142,7 @@
 -  DefaultConfigSection: FhirEngine
 - configuration main class: 
   - SurrogateConfigurationMethods: 
+    - 
 - key functions:
   - IFhirEngineBuilder AddFhirEngineServer(this WebApplicationBuilder, string configSection = "FhirEngine" )
     - IFhirEngineBuilder AddFhirEngineServer(this WebApplicationBuilder builder, Assembly callingAssembly, string configSection)
@@ -112,6 +150,7 @@
          Assembly callingAssembly, IConfiguration configuration, string configSection)
         - IFhirEngineBuilder AddFhirEngineServer(this IServiceCollection services, IConfiguration configuration, Action<IFhirEngineBuilder> configureServices, string configSection = DefaultConfigSection) 
           - AddFhirEngineServerInternal
+              - ForAssemblySpecification: Configure<FhirEngineOptions>
               - AddDistributedMemoryCache & DefaultTaggedDistributedCache
               - DistributedCacheFhirResourceCache
           - AddFhirEngineEndpoints

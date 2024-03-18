@@ -1,0 +1,7 @@
+- plugins
+  - git, pipeline, ssh, ssh-agent
+  - [Generic Webhook Trigger](https://plugins.jenkins.io/generic-webhook-trigger/)
+  - [Parameterized Trigger Plugin](https://plugins.jenkins.io/parameterized-trigger/):This plugin lets you trigger new builds when your build has completed, with various ways of specifying parameters for the new build.
+  - [Conditional BuildStep](https://plugins.jenkins.io/conditional-buildstep/): A buildstep wrapping any number of other buildsteps, controlling their execution based on a defined condition.
+  - [Run Condition](https://plugins.jenkins.io/run-condition/): This plugin defines an ExtensionPoint that can be used by plugins to define new Run Conditions and to use Run Conditions to decide whether to run a build step.
+  - [Token Macro](https://plugins.jenkins.io/token-macro/): This plugin adds reusable macro expansion capability for other plugins to use in job configurations.
