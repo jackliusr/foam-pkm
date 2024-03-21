@@ -1,1 +1,0 @@
-- %%capture: run the cell, capturing stdout, stderr, and IPython’s rich display() calls.
