@@ -1,0 +1,3 @@
+- [LINQ Secrets Revealed: Chaining and Debugging](https://www.red-gate.com/simple-talk/development/dotnet-development/linq-secrets-revealed-chaining-and-debugging/)https://www.red-gate.com/simple-talk/development/dotnet-development/linq-secrets-revealed-chaining-and-debugging/
+- [LINQ Debugging and Visualization](https://www.red-gate.com/simple-talk/development/dotnet-development/linq-debugging-visualization/)
+- LINQBridgeVs

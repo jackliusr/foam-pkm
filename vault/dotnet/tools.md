@@ -41,3 +41,8 @@ tags: dotnet, tools
   - docfx
   - Sandcastle
   - Doxygen
+- code snippet run
+  - C# Interactive
+  - linqpad
+  - https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/tutorials/hello-world?tutorial-step=1
+  - 

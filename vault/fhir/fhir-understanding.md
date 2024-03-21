@@ -5,6 +5,7 @@
 - MergeResourcesHandler: 
 - AddRepositoryHandlers:
 - FhirResourceCachingHandler:
+- FhirHandlerAttribute(string handlerName, HandlerCategory category, FhirInteractionType interaction, int sort)
 - SearchOptionsFactory:  create search options
   ```mermaid
   classDiagram
@@ -14,6 +15,22 @@
       SearchOptions: +isMammal()
       SearchOptions: +mate()
   ```
+- <>
+  - FhirDataStore<PopHealthPatient>: 
+    ```c#
+    //TContext will be internal existing type PopHealthPatient 
+    public static IFhirEngineBuilder AddFhirDataStoreHandler<TContext>(this IFhirEngineBuilder builder, Action<RepositoryHandlerSettings> configureOptions)
+    ```
+  - FhirDataStore<@PopHealthPatient@PopHealthPatientParent>: 
+    ```c#
+    //TContext will be runtime-generated class PopHealthPatient which inherit PopHealthPatientParent 
+    public static IFhirEngineBuilder AddFhirDataStoreHandler<TContext>(this IFhirEngineBuilder builder, Action<RepositoryHandlerSettings> configureOptions)
+    ```
+  - FhirDataStore<@PopHealthPatient> and FhirDataStore<!PopHealthPatient>: 
+    ```c#
+    //TContext will be runtime-generated class PopHealthPatient which inherient 
+    public static IFhirEngineBuilder AddFhirDataStoreHandler<TContext>(this IFhirEngineBuilder builder, Action<RepositoryHandlerSettings> configureOptions)
+    ```
 - additional service path in FhirEngine section: ["Handlers", "SystemPlugins", "Handlers:RepositoryHandlers:DbRepository"]
 - ResourceRepositoryCacheService: new version of cache implementation, ResourceRepositoryCacheService, IRepositoryService<TResource>
 - DetermineInteractionType
@@ -142,7 +159,7 @@
 -  DefaultConfigSection: FhirEngine
 - configuration main class: 
   - SurrogateConfigurationMethods: 
-    - 
+  - 
 - key functions:
   - IFhirEngineBuilder AddFhirEngineServer(this WebApplicationBuilder, string configSection = "FhirEngine" )
     - IFhirEngineBuilder AddFhirEngineServer(this WebApplicationBuilder builder, Assembly callingAssembly, string configSection)
@@ -158,9 +175,28 @@
     - IEndpointRouteBuilder MapFhirEngine(this IEndpointRouteBuilder endpoints, string? rootPath)
     - MapGet/Post/Methods
       - TResult Process<TResult>(ObjectFactory factory, HttpContext context, ActivitySource activitySource)
+        - ** the returned FhirGetResult, or FhirResult, their BindAsync and ExecuteAsync will be called by asp.net core pipeline **
         - factory: 
           - ActivatorUtilities.CreateFactory(typeof(FhirGetResult), System.Type.EmptyTypes);
           - ActivatorUtilities.CreateFactory(typeof(FhirResult), System.Type.EmptyTypes);
-        - factory(context.RequestServices, null) 
+        - factory(context.RequestServices, null)//factor is delegate ObjectFactory(IServiceProvider serviceProvider, object?[]? arguments); context.RequestServices: IServiceProvider
           - FhirResult.ExecuteAsync
           - FhirHandlerProcessor.ProcessAsync
+```diff
+diff --git a/sample/TestFhirEngine/wwwroot/index.html b/sample/TestFhirEngine/wwwroot/index.html
+index 32a8380055..e1919e39f4 100644
+--- a/sample/TestFhirEngine/wwwroot/index.html
++++ b/sample/TestFhirEngine/wwwroot/index.html
+@@ -11,9 +11,10 @@
+ </head>
+ <body>
+     <rapi-doc spec-url="/swagger/v1/swagger.json"
+-              server-url="https://pophealth.healthdxp.com"
++              server-url="https://localhost:5001"
+               show-header="false"
+               theme="dark"
++             api-headers='{"X-Ihis-SourceApplication": "CCDP"}'
+               schema-style="table"
+               render-style="focused"
+               show-method-in-nav-bar="as-colored-block">
+```

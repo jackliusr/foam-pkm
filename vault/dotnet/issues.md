@@ -2,3 +2,6 @@
   ```
   export DOTNET_USE_POLLING_FILE_WATCHER=1
   ```
+- AWS Toolkit for Visual Studion in documentation
+  - System.AggregateException: One or more errors occurred. ---> Microsoft.VisualStudio.Setup.PackageFailureException: Package 'OpenJDKv17' failed to install
+  - install vscode in wsl

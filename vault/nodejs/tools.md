@@ -1,0 +1,8 @@
+- @rushstack/heft: a config-driven toolchain that invokes other popular tools such as TypeScript, ESLint, Jest, Webpack, and API Extractor. 
+- @microsoft/api-extractor: API Extractor provides an integrated, professional-quality solution for all these problems. It is invoked at build time by your toolchain and leverages the TypeScript compiler engine to:
+  - Detect a project's exported API surface
+  - Capture the contracts in a concise report designed to facilitate review
+  - Warn about common mistakes (e.g. missing exports, inconsistent visibility, etc.)
+  - Generate *.d.ts rollups with trimming according to release type
+  - Output API documentation in a portable format that's easy to integrate with your content pipeline
+- @rushstack/rig-package
