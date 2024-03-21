@@ -1,1 +1,0 @@
-- Azure Cosmos DB provides language-integrated, transactional execution of JavaScript that lets you write stored procedures, triggers, and user-defined functions (UDFs).  in javascript
