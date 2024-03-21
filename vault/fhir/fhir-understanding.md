@@ -6,6 +6,10 @@
 - AddRepositoryHandlers:
 - FhirResourceCachingHandler:
 - FhirHandlerAttribute(string handlerName, HandlerCategory category, FhirInteractionType interaction, int sort)
+- command to find methods which are used by ConfigurationProcessor.DependencyInjection for configurationSection
+  ```bash
+  rg -g '*.cs' "\(this IFhirEngineBuilder"
+  ```
 - SearchOptionsFactory:  create search options
   ```mermaid
   classDiagram
